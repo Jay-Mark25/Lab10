@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>SRS | PIANO</title>
+    <style>
+
+        #splash-screen {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 3rem;
+          font-style: bold;
+          color: black;
+          z-index: 9999;
+          animation: fadeOut 1s ease-in-out 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+      body {
+        cursor: none;
+      }
+      .trail {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #B2BEB5; /* ash gray */
+        border-radius: 10%;
+        pointer-events: none;
+        opacity: 0.50;
+        filter: blur(1px);
+        transition: opacity 0.5s ease-out, transform 5s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="splash-screen">Welcome to Student Recording System</div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script>
+      document.getElementById('splash-screen').addEventListener('animationend', function(){
+            this.remove();
+        });
+      document.addEventListener('mousemove', (e) => {
+        const trail = document.createElement('div');
+        trail.className = 'trail';
+        trail.style.left = e.pageX + 'px';
+        trail.style.top = e.pageY + 'px';
+        document.body.appendChild(trail);
+
+        // Animate and remove the trail element after a short delay
+        setTimeout(() => {
+          trail.style.opacity = '0';
+          trail.style.transform = 'scale(1.5)';
+        }, 100);
+
+        setTimeout(() => {
+          trail.remove();
+        }, 2500);
+      });
+    </script>
+  </body>
+</html>

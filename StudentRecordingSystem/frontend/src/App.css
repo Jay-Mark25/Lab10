@@ -1,0 +1,129 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the entire background */
+  z-index: -1; /* Place the video behind other elements */
+}
+
+.overlay {
+  text-align: center;
+  background: gray;
+  opacity: 0.8; /* Semi-transparent background */
+  border-radius: 15px; /* Rounded corners */
+  padding: 20px; /* Inner spacing */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  backdrop-filter: blur(10px); /* Blur effect */
+  max-width: 600px; /* Limit width */
+  z-index: 1; /* Ensure it appears above the video */
+  position: relative; /* Ensure z-index works */
+}
+
+.student-item .delete-button {
+  display: none;
+  margin-left: 10px;
+}
+
+.student-item:hover .delete-button {
+  display: inline-block;
+}
+
+.name-container:hover .photo-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.snake-border {
+  position: relative;
+  display: inline-block;
+}
+
+.snake-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.snake-rect {
+  fill: none;
+  stroke: rgb(255, 255, 255);
+  stroke-width: 1;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: snakeDash 10s linear infinite;
+}
+
+@keyframes snakeDash {
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+
+.pop-animate {
+  animation: containerPopup 1s forwards;
+}
+
+@keyframes containerPopup {
+  from {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
