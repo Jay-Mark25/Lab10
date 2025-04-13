@@ -6,6 +6,32 @@ import './App.css';
 import cubesVideo from './videos/cubes.mp4';
 import backgroundMusic from './audio/background-music.mp3';
 
+const cursorDot = document.querySelector("[data-cursor-dot]");
+const cursorOutline = document.querySelector("[data-cursor-outline]");
+
+window.addEventListener("mousemove", (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+    cursorOutline.style.left = `${posX}px`;
+    cursorOutline.style.top = `${posY}px`;
+
+    cursorOutline.animate(
+        {
+            left: `${posX}px`,
+            top: `${posY}px`,
+        },
+        {
+            duration: 500,
+            fill: "forwards"
+        }
+    );
+
+    }
+);
+
 const App = () => {
     const [students, setStudents] = useState([]);
     const audioRef = useRef(null);
@@ -17,7 +43,6 @@ const App = () => {
         if (!localStorage.getItem("visited")) {
             setAnimate(true);
             localStorage.setItem("visited", "true");
-            // Remove the animation state after the animation duration (1s)
             setTimeout(() => {
                 setAnimate(false);
             }, 1000);

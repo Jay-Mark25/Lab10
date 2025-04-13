@@ -8,9 +8,9 @@
     <meta name="description" content="Web site created using create-react-app" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="%PUBLIC_URL%/styles.css" />
     <title>SRS | PIANO</title>
     <style>
-
         #splash-screen {
           position: fixed;
           top: 0;
@@ -34,27 +34,14 @@
                 visibility: hidden;
             }
         }
-
-      body {
-        cursor: none;
-      }
-      .trail {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background-color: #B2BEB5; /* ash gray */
-        border-radius: 10%;
-        pointer-events: none;
-        opacity: 0.50;
-        filter: blur(1px);
-        transition: opacity 0.5s ease-out, transform 5s ease-out;
-      }
     </style>
   </head>
   <body>
     <div id="splash-screen">Welcome to Student Recording System</div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+      <div id="root"></div>
+      <div class="cursor-dot" data-cursor-dot></div>
+      <div class="cursor-outline" data-cursor-outline></div>
     <script>
       document.getElementById('splash-screen').addEventListener('animationend', function(){
             this.remove();
