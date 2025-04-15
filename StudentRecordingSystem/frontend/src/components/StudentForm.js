@@ -18,7 +18,7 @@ const StudentForm = ({ addStudent }) => {
   };
 
   return (
-    <div>
+    <div className="input-placeholder">
       <form onSubmit={handleSubmit}>
         <input
           type="text"

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="%PUBLIC_URL%/styles.css" />
     <title>SRS | PIANO</title>
     <style>
+        @import url('https://fonts.cdnfonts.com/css/minecraft-4');
         #splash-screen {
           position: fixed;
           top: 0;
@@ -39,6 +40,7 @@
   <body>
     <div id="splash-screen">Welcome to Student Recording System</div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+      <div id="app"></div>
       <div id="root"></div>
       <div class="cursor-dot" data-cursor-dot></div>
       <div class="cursor-outline" data-cursor-outline></div>
@@ -46,23 +48,6 @@
       document.getElementById('splash-screen').addEventListener('animationend', function(){
             this.remove();
         });
-      document.addEventListener('mousemove', (e) => {
-        const trail = document.createElement('div');
-        trail.className = 'trail';
-        trail.style.left = e.pageX + 'px';
-        trail.style.top = e.pageY + 'px';
-        document.body.appendChild(trail);
-
-        // Animate and remove the trail element after a short delay
-        setTimeout(() => {
-          trail.style.opacity = '0';
-          trail.style.transform = 'scale(1.5)';
-        }, 100);
-
-        setTimeout(() => {
-          trail.remove();
-        }, 2500);
-      });
     </script>
   </body>
 </html>

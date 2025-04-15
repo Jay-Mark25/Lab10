@@ -29,8 +29,7 @@ window.addEventListener("mousemove", (e) => {
         }
     );
 
-    }
-);
+    });
 
 const App = () => {
     const [students, setStudents] = useState([]);
@@ -89,7 +88,8 @@ const App = () => {
                 Your browser does not support the video tag.
             </video>
             <audio ref={audioRef} autoPlay loop>
-                <source src={backgroundMusic} type="audio/mpeg" />
+                <source src={backgroundMusic} type="audio/mp3" />
+                <track kind="captions" srcLang="en" label="English captions" />
                 Your browser does not support the audio element.
             </audio>
             <div className="snake-border">

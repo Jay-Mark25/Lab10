@@ -39,14 +39,23 @@
 
 .container {
   position: relative;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Prevent scrollbars */
+  overflow: hidden;
 }
 
 .overlay {
+  text-align: center;
+  background: gray;
+  opacity: 0.8; /* Semi-transparent background */
+  border-radius: 15px; /* Rounded corners */
+  padding: 20px; /* Inner spacing */
+  backdrop-filter: blur(15px);
+  max-width: 600px;
+  z-index: 1; 
+  position: relative;
   transition: transform 1s ease, box-shadow 2s ease;
 }
 
@@ -55,22 +64,70 @@
   transform: scale(1.05);
 }
 
+.snake-border {
+  position: relative;
+  display: inline-block;
+  transition: transform 1s ease;
+}
+
+.snake-border:hover {
+  transform: scale(1.05);
+}
+
+.snake-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 1s ease;
+}
+
+.snake-rect {
+  fill: none;
+  stroke: rgb(255, 255, 255);
+  stroke-width: 1;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: snakeDash 10s linear infinite;
+  transition: transform 1s ease;
+}
+
+@keyframes snakeDash {
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+
+.input-placeholder {
+  text-shadow: #282c34 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: black;
+}
+
 .student-item {
-  transition: transform 1s ease, box-shadow 2s ease;
+  transition: transform 0.5s, box-shadow 1s ease;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   background-color: #282c34;
   margin-bottom: 10px;
   border-radius: 15px;
-}
-
-.student-item {
-  transition: transform 0.5s, box-shadow 1s ease;
+  opacity: 100%;
 }
 
 .student-item:hover {
   box-shadow: 0 4px 6px rgba(100, 100, 100, 0.1), 10px 10px 10px black;
   transform: scale(1.05);
+}
+
+.student-item .delete-button {
+  display: none;
+  margin-left: 10px;
+}
+
+.student-item:hover .delete-button {
+  display: inline-block;
 }
 
 .srs-head {
@@ -87,62 +144,6 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
-}
-
-.overlay {
-  text-align: center;
-  background: gray;
-  opacity: 0.8; /* Semi-transparent background */
-  border-radius: 15px; /* Rounded corners */
-  padding: 20px; /* Inner spacing */
-  backdrop-filter: blur(10px);
-  max-width: 600px;
-  z-index: 1; 
-  position: relative;
-}
-
-.student-item .delete-button {
-  display: none;
-  margin-left: 10px;
-}
-
-.student-item:hover .delete-button {
-  display: inline-block;
-}
-
-.name-container:hover .photo-tooltip {
-  opacity: 1;
-  visibility: visible;
-}
-
-.snake-border {
-  position: relative;
-  display: inline-block;
-}
-
-.snake-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 400px;
-  height: 20px;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.snake-rect {
-  fill: none;
-  stroke: rgb(255, 255, 255);
-  stroke-width: 1;
-  stroke-dasharray: 50;
-  stroke-dashoffset: 50;
-  animation: snakeDash 10s linear infinite;
-}
-
-@keyframes snakeDash {
-  to {
-    stroke-dashoffset: -400;
-  }
 }
 
 .pop-animate {
@@ -180,4 +181,8 @@
   border-radius: 50%;
   z-index: 100;
   pointer-events: none;
+}
+
+body {
+  font-family: 'Minecraft', sans-serif;
 }
